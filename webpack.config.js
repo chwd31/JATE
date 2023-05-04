@@ -11,8 +11,8 @@ module.exports = () => {
   return {
     mode: 'development',
     entry: {
-      main: './src/js/index.js',
-      install: './src/js/install.js'
+      main: './client/src/js/index.js',
+      install: './client/src/js/install.js'
     },
     output: {
       filename: '[name].bundle.js',
@@ -20,7 +20,7 @@ module.exports = () => {
     },
     plugins: [
       new HtmlWebpackPlugin({ 
-        template: './src/index.html',
+        template: './client/index.html',
         title: 'JATE',
       }),
       new WebpackPwaManifest({
@@ -31,14 +31,14 @@ module.exports = () => {
         theme_color: '#3367d6',
         icons: [
           {
-            src: path.resolve('src/img/icon.png'),
+            src: path.resolve('./client/src/img/logo.png'),
             sizes: [96, 128, 192, 256, 384, 512],
             type: 'image/png',
           },
         ]
       }),
       new InjectManifest({
-        swSrc: './src-sw.js',
+        swSrc: './client/src-sw.js',
         exclude: [/\.map$/],
       }),
     ],
